@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: sop-tbang-store-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: DB_PATH
+        value: /var/data/shop.db
+    disk:
+      name: sop-tbang-store-data
+      mountPath: /var/data
+      sizeGB: 1
